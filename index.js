@@ -1,8 +1,25 @@
-//UPDATE DB NAME
+const express=require('express');
+const {PORT} = require('./config');
+const databaseConfig=require('./config/database');
+const expressConfig=require('./config/express');
+const routesConfig=require('./config/routes')
 
-module.exports={
-    PORT: 3000,
-    DB_CONNECTION_STRING: 'mongodb://localhost:27017/exam-db',
-    TOKEN_SECRET: 'this is very secure11',
-    COOKIE_NAME: 'SESSION_TOKEN'
+start()
+
+async function start(){
+    const app=express();
+    await databaseConfig(app);
+    expressConfig(app);
+    routesConfig(app);
+    
+    app.get('/', function (req, res){
+        res.render('home')
+    });
+
+    app.listen(PORT, function(){
+        console.log(`app runnng at http://localhost/${PORT}`)
+    })
 }
+
+
+
