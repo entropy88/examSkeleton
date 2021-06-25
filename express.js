@@ -2,7 +2,7 @@ const express = require('express');
 const hbs = require('express-handlebars')
 const cookieParser = require('cookie-parser');
 const authMiddleware = require('../middlewares/auth');
-const storageMiddleware=require('.../middlewares/storage');
+const storageMiddleware=require('../middlewares/storage');
 
 
 module.exports = (app) => {
